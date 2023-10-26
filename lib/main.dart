@@ -2,7 +2,7 @@ import 'package:bookly/features/splash/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'constants/constants.dart';
+import 'constants.dart';
 
 void main() {
   runApp(const Bookly());

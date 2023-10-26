@@ -1,6 +1,9 @@
+import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/assets.dart';
+import 'package:bookly/features/home/presentaion/views/home_view.dart';
 import 'package:bookly/features/splash/presentation/views/widgets/fade_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -18,15 +21,12 @@ class _SplashViewBodyState extends State<SplashViewBody>
   @override
   void initState() {
     super.initState();
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 2),
-    );
+    initFadeAnimation();
 
-    fadeAnimation =
-        Tween<double>(begin: 0.0, end: 1.0).animate(animationController);
-    animationController.forward();
+    navigateTo();
   }
+
+
 
   @override
   void dispose() {
@@ -45,6 +45,23 @@ class _SplashViewBodyState extends State<SplashViewBody>
       ],
     );
   }
+
+  void initFadeAnimation() {
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    );
+
+    fadeAnimation =
+        Tween<double>(begin: 0.0, end: 1.0).animate(animationController);
+    animationController.forward();
+  }
+
+  void navigateTo() {
+    Future.delayed(const Duration(seconds: 2), () {
+      Get.offAll(() => const HomeView(),
+          transition: Transition.rightToLeftWithFade,
+          duration: kTranstionDuration);
+    });
+  }
 }
-
-
