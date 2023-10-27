@@ -1,5 +1,6 @@
+import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/assets.dart';
-import 'package:bookly/icon_broken.dart';
+import 'package:bookly/core/utils/styles/icon_broken.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -9,8 +10,8 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        left: 24,
-        right: 24,
+        left: KAppPadding,
+        right: KAppPadding,
         top: 40,
         bottom: 30.0,
       ),

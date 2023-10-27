@@ -1,9 +1,7 @@
-import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/styles/styles.dart';
+import 'package:bookly/features/home/presentaion/views/widgets/best_seller_list_view_item.dart';
 import 'package:bookly/features/home/presentaion/views/widgets/custom_app_bar.dart';
-import 'package:bookly/features/home/presentaion/views/widgets/custom_list_view_item.dart';
 import 'package:bookly/features/home/presentaion/views/widgets/featured_list_view.dart';
-import 'package:bookly/icon_broken.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -26,54 +24,13 @@ class HomeViewBody extends StatelessWidget {
             style: Styles.textStyle18,
           ),
         ),
+        SizedBox(
+          height: 20.0,
+        ),
         BestSellerListViewItem(),
       ],
     );
   }
 }
 
-class BestSellerListViewItem extends StatelessWidget {
-  const BestSellerListViewItem({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(
-        24,
-      ),
-      child: SizedBox(
-        height: 125,
-        child: Row(
-          children: [
-            AspectRatio(
-              aspectRatio: 2.5 / 4,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: Colors.red,
-                  image: const DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage(
-                      AssetsData.testImage,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Column(
-              children: [
-                Text('data'),
-                Text('data'),
-              ],
-            ),
-            Row(
-              children: [
-                Text('data'),
-              ],
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
