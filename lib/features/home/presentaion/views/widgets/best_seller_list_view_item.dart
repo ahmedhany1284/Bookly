@@ -40,6 +40,7 @@ class BestSellerItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
                     child: Text(
                       'Harry potter and the goblet of fire',
                       maxLines: 2,
@@ -47,7 +48,6 @@ class BestSellerItem extends StatelessWidget {
                       style: Styles.textStyle20
                           .copyWith(fontFamily: kGtSectraFine),
                     ),
-                    width: MediaQuery.of(context).size.width * 0.5,
                   ),
                   const SizedBox(
                     height: 3.0,
