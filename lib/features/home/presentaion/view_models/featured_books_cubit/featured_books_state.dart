@@ -6,15 +6,15 @@ abstract class FeaturedBooksState extends Equatable {
   List<Object> get props => [];
 }
 
-class FeaturedBooksInitial extends FeaturedBooksState {}
-class FeaturedBooksLoading extends FeaturedBooksState {}
-class FeaturedBooksFailure extends FeaturedBooksState {
+class FeaturedBooksInitialState extends FeaturedBooksState {}
+class FeaturedBooksLoadingState extends FeaturedBooksState {}
+class FeaturedBooksFailureState extends FeaturedBooksState {
   final String errorMassage;
 
-  const FeaturedBooksFailure(this.errorMassage);
+  const FeaturedBooksFailureState(this.errorMassage);
 }
-class FeaturedBooksSuccess extends FeaturedBooksState {
+class FeaturedBooksSuccessState extends FeaturedBooksState {
   final List<BookModel>books;
 
-  const FeaturedBooksSuccess(this.books);
+  const FeaturedBooksSuccessState(this.books);
 }
