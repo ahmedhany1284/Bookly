@@ -11,7 +11,10 @@ class BookDetailsSectionWithActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
+    var width = MediaQuery
+        .of(context)
+        .size
+        .width;
     return Column(
       children: [
         Padding(
@@ -47,7 +50,9 @@ class BookDetailsSectionWithActionButton extends StatelessWidget {
                 height: 18.0,
               ),
               const BookRating(
-                mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  rating: 5,
+                  count: 250 ,
               ),
               const SizedBox(
                 height: 37.0,

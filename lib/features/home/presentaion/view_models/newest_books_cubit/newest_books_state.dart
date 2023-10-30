@@ -14,7 +14,7 @@ class NewestBooksSuccessState extends NewestBooksState {
   const NewestBooksSuccessState(this.books);
 }
 class NewestBooksFailureState extends NewestBooksState {
-  final String error;
+  final String errorMassage;
 
-  const NewestBooksFailureState(this.error);
+  const NewestBooksFailureState( this.errorMassage);
 }

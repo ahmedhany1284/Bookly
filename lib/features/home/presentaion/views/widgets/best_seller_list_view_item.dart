@@ -1,18 +1,21 @@
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/app_router.dart';
-import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/styles/styles.dart';
+import 'package:bookly/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly/features/home/presentaion/views/widgets/book_rating.dart';
+import 'package:bookly/features/home/presentaion/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({super.key});
+  const BestSellerItem({super.key, required this.bookModel});
+
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         GoRouter.of(context).push(AppRouter.kBookDetails);
       },
       child: Padding(
@@ -23,20 +26,8 @@ class BestSellerItem extends StatelessWidget {
           height: 125,
           child: Row(
             children: [
-              AspectRatio(
-                aspectRatio: 2.5 / 4,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Colors.red,
-                    image: const DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage(
-                        AssetsData.testImage,
-                      ),
-                    ),
-                  ),
-                ),
+              CustomBookImage(
+                imageURL: bookModel.volumeInfo.imageLinks.thumbnail,
               ),
               const SizedBox(
                 width: 30,
@@ -48,7 +39,7 @@ class BestSellerItem extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.5,
                       child: Text(
-                        'Harry potter and the goblet of fire',
+                        bookModel.volumeInfo.title!,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: Styles.textStyle20
@@ -59,7 +50,7 @@ class BestSellerItem extends StatelessWidget {
                       height: 3.0,
                     ),
                     Text(
-                      'J.K. Rowling',
+                      bookModel.volumeInfo.authors![0],
                       style: Styles.textStyle14.copyWith(
                         color: KGreyText,
                       ),
@@ -76,7 +67,10 @@ class BestSellerItem extends StatelessWidget {
                           ),
                         ),
                         Spacer(),
-                        BookRating(),
+                        BookRating(
+                          rating: bookModel.volumeInfo.averageRating ?? 0,
+                          count: bookModel.volumeInfo.ratingsCount ?? 0,
+                        ),
                       ],
                     )
                   ],
@@ -89,5 +83,3 @@ class BestSellerItem extends StatelessWidget {
     );
   }
 }
-
-
