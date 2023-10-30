@@ -9,7 +9,6 @@ class HomeRepoImp extends HomeRepo {
   final ApiService apiService;
 
   HomeRepoImp(this.apiService);
-
   @override
   Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
     try {
