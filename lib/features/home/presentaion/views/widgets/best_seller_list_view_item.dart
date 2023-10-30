@@ -27,7 +27,7 @@ class BestSellerItem extends StatelessWidget {
           child: Row(
             children: [
               CustomBookImage(
-                imageURL: bookModel.volumeInfo.imageLinks.thumbnail,
+                imageURL: bookModel.volumeInfo.imageLinks?.thumbnail ?? '',
               ),
               const SizedBox(
                 width: 30,
@@ -42,8 +42,9 @@ class BestSellerItem extends StatelessWidget {
                         bookModel.volumeInfo.title!,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: Styles.textStyle20
-                            .copyWith(fontFamily: kGtSectraFine),
+                        style: Styles.textStyle20.copyWith(
+                          fontFamily: kGtSectraFine,
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -66,13 +67,13 @@ class BestSellerItem extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         BookRating(
                           rating: bookModel.volumeInfo.averageRating ?? 0,
                           count: bookModel.volumeInfo.ratingsCount ?? 0,
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
