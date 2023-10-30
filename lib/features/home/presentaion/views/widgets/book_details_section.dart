@@ -24,7 +24,9 @@ class BookDetailsSectionWithActionButton extends StatelessWidget {
               const CustomBookDetailsAppBar(),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: width * (80 / width)),
-                child: const CustomBookImage(),
+                child: const CustomBookImage(
+                  imageURL: 'https://img.freepik.com/free-psd/world-forest-day-poster-template_23-2148899237.jpg',
+                ),
               ),
               const SizedBox(
                 height: 43,

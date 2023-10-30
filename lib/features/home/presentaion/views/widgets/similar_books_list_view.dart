@@ -16,6 +16,7 @@ class SimilarsBookListView extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 5.0),
             child: CustomBookImage(
               borderRadius: BorderRadius.circular(8.0),
+              imageURL: 'https://img.freepik.com/free-psd/world-forest-day-poster-template_23-2148899237.jpg',
             ),
           );
         },
