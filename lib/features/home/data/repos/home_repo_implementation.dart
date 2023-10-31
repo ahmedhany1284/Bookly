@@ -9,6 +9,7 @@ class HomeRepoImp extends HomeRepo {
   final ApiService apiService;
 
   HomeRepoImp(this.apiService);
+
   @override
   Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
     try {
@@ -45,11 +46,12 @@ class HomeRepoImp extends HomeRepo {
     }
   }
 
-
-  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({required String category}) async {
+  @override
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks(
+      {required String category}) async {
     try {
       var data = await apiService.get(
-          endpoint: 'volumes?Filtering=free-ebooks&Sorting=relevance &q=computer science');
+          endpoint: 'volumes?Filtering=free-ebooks&Sorting=relevance &q=subject:Programming');
       List<BookModel> books = [];
       for (var item in data['items']) {
         books.add(BookModel.fromJson(item));
@@ -63,3 +65,6 @@ class HomeRepoImp extends HomeRepo {
     }
   }
 }
+
+
+

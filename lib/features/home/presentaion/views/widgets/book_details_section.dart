@@ -1,5 +1,6 @@
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/styles/styles.dart';
+import 'package:bookly/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly/features/home/presentaion/views/widgets/book_rating.dart';
 import 'package:bookly/features/home/presentaion/views/widgets/box_action.dart';
 import 'package:bookly/features/home/presentaion/views/widgets/custom_book_detailed_appbar.dart';
@@ -7,14 +8,14 @@ import 'package:bookly/features/home/presentaion/views/widgets/custom_book_image
 import 'package:flutter/material.dart';
 
 class BookDetailsSectionWithActionButton extends StatelessWidget {
-  const BookDetailsSectionWithActionButton({super.key});
+  const BookDetailsSectionWithActionButton(
+      {super.key, required this.bookModel});
+
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery
-        .of(context)
-        .size
-        .width;
+    var width = MediaQuery.of(context).size.width;
     return Column(
       children: [
         Padding(
@@ -27,32 +28,33 @@ class BookDetailsSectionWithActionButton extends StatelessWidget {
               const CustomBookDetailsAppBar(),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: width * (80 / width)),
-                child: const CustomBookImage(
-                  imageURL: 'https://img.freepik.com/free-psd/world-forest-day-poster-template_23-2148899237.jpg',
+                child: CustomBookImage(
+                  imageURL: bookModel.volumeInfo.imageLinks?.thumbnail ?? '',
                 ),
               ),
               const SizedBox(
                 height: 43,
               ),
-              const Text(
-                'The Jungle Book',
+               Text(
+                bookModel.volumeInfo.title!,
                 style: Styles.textStyle30,
+                 textAlign: TextAlign.center,
               ),
               const SizedBox(
                 height: 6.0,
               ),
               Text(
-                'Rudyard kipling',
+                bookModel.volumeInfo.authors?[0]??'',
                 style: Styles.textStyle18
                     .copyWith(color: KGreyText, fontStyle: FontStyle.italic),
               ),
               const SizedBox(
                 height: 18.0,
               ),
-              const BookRating(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  rating: 5,
-                  count: 250 ,
+              BookRating(
+                mainAxisAlignment: MainAxisAlignment.center,
+                rating: bookModel.volumeInfo.averageRating??0,
+                count: bookModel.volumeInfo.ratingsCount??0,
               ),
               const SizedBox(
                 height: 37.0,

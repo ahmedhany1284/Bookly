@@ -12,29 +12,28 @@ class SimilarsBookListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SimilarBooksCubit, SimilarBooksState>(
       builder: (context, state) {
-        if(state is SimilarBooksSuccessState) {
+        if (state is SimilarBooksSuccessState) {
           return SizedBox(
-          height: (MediaQuery
-              .of(context)
-              .size
-              .height * 0.175),
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                child: CustomBookImage(
-                  borderRadius: BorderRadius.circular(8.0),
-                  imageURL: 'https://img.freepik.com/free-psd/world-forest-day-poster-template_23-2148899237.jpg',
-                ),
-              );
-            },
-          ),
-        );
-        }else if(state is SimilarBooksFailureState){
+            height: (MediaQuery.of(context).size.height * 0.175),
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount:  state.books.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  child: CustomBookImage(
+                    borderRadius: BorderRadius.circular(8.0),
+                    imageURL:
+                        state.books[index].volumeInfo.imageLinks?.thumbnail ??
+                            '',
+                  ),
+                );
+              },
+            ),
+          );
+        } else if (state is SimilarBooksFailureState) {
           return CustomErrorWidget(errorMassage: state.errorMassage);
-        }else{
+        } else {
           return const CustomLoadingIndicator();
         }
       },
