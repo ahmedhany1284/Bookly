@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 
 class BooksAction extends StatelessWidget {
   const BooksAction({super.key, required this.bookModel});
-final BookModel bookModel;
+
+  final BookModel bookModel;
+
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-      padding:  const EdgeInsets.symmetric(horizontal: 8.0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
         children: [
           const Expanded(
@@ -19,12 +21,13 @@ final BookModel bookModel;
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(16),
                 bottomLeft: Radius.circular(16),
-              ), text: 'Free',
+              ),
+              text: 'Free',
             ),
           ),
           Expanded(
             child: CustomButton(
-              onpressed: (){
+              onpressed: () {
                 launchCustomURl(context, bookModel.volumeInfo.previewLink);
               },
               backgroundColor: const Color(0xffEF8262),
@@ -32,7 +35,8 @@ final BookModel bookModel;
               borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(12),
                 bottomRight: Radius.circular(12),
-              ), text: getText(bookModel),
+              ),
+              text: getText(bookModel),
             ),
           ),
         ],
@@ -40,10 +44,10 @@ final BookModel bookModel;
     );
   }
 
-String  getText(BookModel bookModel){
-    if(bookModel.volumeInfo.previewLink==null){
+  String getText(BookModel bookModel) {
+    if (bookModel.volumeInfo.previewLink == null) {
       return 'Not Avaliable';
-    }else{
+    } else {
       return 'Preview';
     }
   }

@@ -35,16 +35,16 @@ class BookDetailsSectionWithActionButton extends StatelessWidget {
               const SizedBox(
                 height: 43,
               ),
-               Text(
+              Text(
                 bookModel.volumeInfo.title!,
                 style: Styles.textStyle30,
-                 textAlign: TextAlign.center,
+                textAlign: TextAlign.center,
               ),
               const SizedBox(
                 height: 6.0,
               ),
               Text(
-                bookModel.volumeInfo.authors?[0]??'',
+                bookModel.volumeInfo.authors?[0] ?? '',
                 style: Styles.textStyle18
                     .copyWith(color: KGreyText, fontStyle: FontStyle.italic),
               ),
@@ -53,13 +53,68 @@ class BookDetailsSectionWithActionButton extends StatelessWidget {
               ),
               BookRating(
                 mainAxisAlignment: MainAxisAlignment.center,
-                rating: bookModel.volumeInfo.averageRating??0,
-                count: bookModel.volumeInfo.ratingsCount??0,
+                rating: bookModel.volumeInfo.averageRating ?? 0,
+                count: bookModel.volumeInfo.ratingsCount ?? 0,
               ),
               const SizedBox(
                 height: 37.0,
               ),
-               BooksAction(bookModel: bookModel,),
+              BooksAction(
+                bookModel: bookModel,
+              ),
+              const SizedBox(
+                height: 37.0,
+              ),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: bookModel.volumeInfo.publisher ?? '',
+                      style: Styles.textStyle18.copyWith(
+                        color: Colors.blue,
+                      ),
+                    ),
+                     TextSpan(
+                      text: bookModel.volumeInfo.publisher != null
+                          ? ' Published this book At '
+                          : 'Published At ',
+                      style: Styles.textStyle18,
+                    ),
+                    TextSpan(
+                      text: '${bookModel.volumeInfo.publishedDate}',
+                      style: Styles.textStyle18.copyWith(
+                        color: Colors.redAccent,
+                      ),
+                    ),
+                    const TextSpan(
+                      text: '.',
+                      style: Styles.textStyle18,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 37,
+              ),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Text(
+                  'Description :',
+                  style:
+                      Styles.textStyle18.copyWith(fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.start,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Opacity(
+                opacity: 0.8,
+                child: Text(
+                  bookModel.volumeInfo.description ?? '',
+                  style: Styles.textStyle16,
+                ),
+              ),
             ],
           ),
         ),

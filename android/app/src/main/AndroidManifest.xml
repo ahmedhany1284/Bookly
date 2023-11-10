@@ -12,7 +12,7 @@
 
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
-        android:label="bookly"
+        android:label="Bookly"
         android:usesCleartextTraffic="true"
         >
         <activity

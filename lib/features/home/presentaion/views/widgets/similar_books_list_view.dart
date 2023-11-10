@@ -19,18 +19,21 @@ class SimilarsBookListView extends StatelessWidget {
             height: (MediaQuery.of(context).size.height * 0.175),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount:  state.books.length,
+              itemCount: state.books.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5.0),
                   child: GestureDetector(
-                    onTap: (){
-                      GoRouter.of(context).push(AppRouter.kBookDetails);
+                    onTap: () {
+                      GoRouter.of(context).push(AppRouter.kBookDetails,
+                          extra: state.books[index]);
                     },
                     child: CustomBookImage(
                       borderRadius: BorderRadius.circular(8.0),
                       imageURL:
                           state.books[index].volumeInfo.imageLinks?.thumbnail ??
+                              state.books[index].volumeInfo.imageLinks
+                                  ?.smallThumbnail ??
                               '',
                     ),
                   ),
