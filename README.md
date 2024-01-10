@@ -5,7 +5,6 @@ Bookly is an application designed for previewing books using the Model-View-View
 architectural pattern, which encouraged scalability and maintainability.
 - Modularity: To provide a tidy and well-organized codebase, code was arranged
 into distinct modules for Views, ViewModels, and Models.
-2023 – 2023
 - Data Binding: To provide smooth updates and interactions, data binding was
 implemented to link the View and ViewModel.
 - State Management: To handle complicated business logic and maintain states
