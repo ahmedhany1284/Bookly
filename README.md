@@ -1,6 +1,25 @@
 <h1>Bookly AppL</h1>
 Bookly is an application designed for previewing books using the Model-View-ViewModel (MVVM) architectural pattern. The implementation enhances scalability, maintainability, and overall code organization.
 
+- The application's responsibilities were divided according to the MVVM
+architectural pattern, which encouraged scalability and maintainability.
+- Modularity: To provide a tidy and well-organized codebase, code was arranged
+into distinct modules for Views, ViewModels, and Models.
+2023 – 2023
+- Data Binding: To provide smooth updates and interactions, data binding was
+implemented to link the View and ViewModel.
+- State Management: To handle complicated business logic and maintain states
+efficiently, the BLoC design was applied.
+- Utilized go_router to manage navigation and routing within the application,
+ensuring smooth user transitions.
+- Deep linking and external URL launches from the program are made possible by
+the integration of url_launcher.
+- Integrated Dio library for seamless handling of HTTP requests.
+- Implemented image caching to reduce data usage and load times for
+- Usage of get_it to implement the dependency injection pattern, which ensures
+clean and maintainable code by encouraging reusability and decoupling
+components.
+
 <h1>BFeatures and Architectural Highlights</h1>
 <h2>MVVM Architecture</h2>
 The application adheres to the MVVM architectural pattern, which separates concerns into Models, Views, and ViewModels. This division fosters a clear structure, making the codebase easier to understand and maintain.
